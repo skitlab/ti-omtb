@@ -1,0 +1,34 @@
+#omx omtb_dbg_lvl 0x10
+#omx omtb_dbg_lvl 0x08
+omx api init
+omx setp 0 adec numinbuf 1
+omx setp 0 adec inbufsize 4096
+omx setp 0 adec inbufsize_flag enable
+omx setp 0 adec inbuf allocate
+omx setp 0 adec numoutbuf 1
+omx setp 0 adec outbufsize 8192
+omx setp 0 adec outbufsize_flag enable
+omx setp 0 adec outbuf allocate
+omx setp 0 adec data_opmode file
+omx setp 0 adec infile /ST/audio/decoder_in/aac/aac_lc/mpeg4/ADIF/castanets_48KHz_Stereo_96kbps_ADIF_yIS_nTNS_yPNS_yMS.aac
+omx setp 0 adec filereset_flag disable
+omx setp 0 adec outfile dm816x_aac.pcm
+omx setp 0 adec ip_compression_format aac
+omx api gethandle adec 0 0
+omx api sendcommand port adec 0 enable 0
+omx api sendcommand port adec 0 waitforsem 0
+omx api sendcommand port adec 0 enable 1
+omx api sendcommand port adec 0 waitforsem 1
+omx api sendcommand state adec 0 idle
+omx api sendcommand state adec 0 waitforsem
+sleep 500
+omx api sendcommand state adec 0 exec
+omx api sendcommand state adec 0 waitforsem
+#sleep 10000
+omx notify adec 0 eos
+omx api sendcommand state adec 0 idle
+omx api sendcommand state adec 0 waitforsem
+omx api sendcommand state adec 0 loaded
+omx api sendcommand state adec 0 waitforsem
+omx api freehandle adec 0
+omx api uninit

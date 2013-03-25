@@ -1,0 +1,32 @@
+#omx omtb_dbg_lvl 0x10
+#omx omtb_dbg_lvl 0x08
+omx api init
+omx setp 0 h264vdec framerate 60
+omx setp 0 h264vdec numinbuf 6
+omx setp 0 h264vdec inbufsize 3110400
+omx setp 0 h264vdec frame_width 1920
+omx setp 0 h264vdec frame_height 1080
+omx setp 0 h264vdec numoutbuf 6
+omx setp 0 h264vdec outbufsize 3637248 
+omx setp 0 h264vdec inbuf allocate
+omx setp 0 h264vdec outbuf allocate
+omx setp 0 h264vdec data_opmode file
+omx setp 0 h264vdec infile /usr/share/ti/data/videos/dm816x_1080p_demo.264
+omx setp 0 h264vdec outfile /usr/share/ti/data/videos/dm816x_1080p_420sp.yuv
+omx api gethandle h264vdec 0 0
+omx api sendcommand port h264vdec 0 enable 0
+omx api sendcommand port h264vdec 0 waitforsem 0
+omx api sendcommand port h264vdec 0 enable 1
+omx api sendcommand port h264vdec 0 waitforsem 1
+omx api sendcommand state h264vdec 0 idle
+omx api sendcommand state h264vdec 0 waitforsem
+sleep 500
+omx api sendcommand state h264vdec 0 exec
+omx api sendcommand state h264vdec 0 waitforsem
+sleep 120000
+omx api sendcommand state h264vdec 0 idle
+omx api sendcommand state h264vdec 0 waitforsem
+omx api sendcommand state h264vdec 0 loaded
+omx api sendcommand state h264vdec 0 waitforsem
+omx api freehandle h264vdec 0
+omx api uninit

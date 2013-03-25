@@ -1,0 +1,167 @@
+omx api init
+omx setp 0 h264vdec frame_width 1920
+omx setp 0 h264vdec frame_height 1080
+omx setp 0 h264vdec inbuf allocate
+omx setp 0 h264vdec outbuf allocate
+omx setp 0 h264vdec inbufsize_flag enable
+omx setp 0 h264vdec outbufsize_flag enable
+omx setp 0 h264vdec inbufsize 2088960
+omx setp 0 h264vdec outbufsize 3612672
+omx setp 0 h264vdec infile /usr/share/ti/data/videos/dm816x_1080p_demo.264
+omx setp 0 h264vdec data_opmode driver
+omx setp 0 h264vdec numinbuf  6
+omx setp 0 h264vdec numoutbuf 8
+omx setp 0 h264vdec framerate 60
+omx setp 0 sc frame_width 1920
+omx setp 0 sc frame_height 1080
+omx setp 0 sc op_chromat_format 422YUYV
+omx setp 0 sc ip_chromat_format 420SP
+omx setp 0 sc numinbuf 8
+omx setp 0 sc inbufalign 0
+omx setp 0 sc inbuf_contig disable
+omx setp 0 sc inbufsize_flag enable
+omx setp 0 sc inbufsize 3612672
+omx setp 0 sc numoutbuf 8
+omx setp 0 sc outbufalign 0
+omx setp 0 sc outbuf_contig disable
+omx setp 0 sc outbufsize_flag enable
+omx setp 0 sc outbufsize 4147200 
+omx setp 0 sc data_opmode driver
+omx setp 0 sc inbuf use
+omx setp 0 vfdc frame_width 1920
+omx setp 0 vfdc frame_height 1080
+omx setp 0 vfdc ip_chromat_format 422YUYV
+omx setp 0 vfdc numinbuf 8 
+omx setp 0 vfdc inbufalign 0
+omx setp 0 vfdc inbuf_contig disable
+omx setp 0 vfdc inbufsize 4147200 
+omx setp 0 vfdc inbuf use
+omx setp 0 vfdc graphics_flag disable
+#omx setp 0 vfdc vcdemo_flag enable
+omx setp 0 vfdc mosaic_window_config vs
+omx setp 0 dc insmod_hdmi disable
+omx api gethandle h264vdec 0 0
+omx api gethandle sc 0 0
+omx api gethandle vfdc 0 0
+omx api gethandle dc 0 0
+omx api getparam  sc 0 0 0 OMX_IndexParamPortDefinition
+omx setp 0 sc OMX_IndexParamPortDefinition video.nStride 2048
+omx api setparam  sc 0 0 0 OMX_IndexParamPortDefinition
+omx api getparam  vfdc 0 0 0 OMX_IndexParamPortDefinition
+omx setp 0 vfdc OMX_IndexParamPortDefinition video.nStride 3840
+omx api setparam  vfdc 0 0 0 OMX_IndexParamPortDefinition
+omx setp 0 vfdc OMX_TI_IndexParamVFDCDriverInstId nDrvInstID 0
+omx setp 0 vfdc OMX_TI_IndexParamVFDCDriverInstId eDispVencMode 1080p60
+omx api setparam  vfdc 0 0 0 OMX_TI_IndexParamVFDCDriverInstId
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout winStartX 0
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout winStartY 0
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout winWidth 1920
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout winHeight 1080
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout pitch.VFDC_YUV_INT_ADDR_IDX 3840
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout pitch.VFDC_YUV_SP_Y_ADDR_IDX 3840
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout pitch.VFDC_YUV_SP_CBCR_ADDR_IDX 3840
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout dataFormat 422I_YUYV
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout bpp bits16
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout priority 0
+omx setp 0 vfdc OMX_TI_IndexParamVFDCCreateMosaicLayout nLayoutId 0
+omx setp 0 vfdc mosaicNumRows 1
+omx setp 0 vfdc mosaicNumCols 1
+omx setp 0 vfdc mosaicDispWindowWidth 1920
+omx setp 0 vfdc mosaicDispWindowHeight 1080
+omx api setparam  vfdc 0 0 0 OMX_TI_IndexParamVFDCCreateMosaicLayout
+omx setp 0 vfdc OMX_TI_IndexConfigVFDCMosaicPort2WinMap nLayoutId 0
+omx api setconfig vfdc 0 0 0 OMX_TI_IndexConfigVFDCMosaicPort2WinMap 1 0 
+omx setp 0 vfdc OMX_TI_IndexParamBuffMemType eBufMemoryType default
+omx setp 0 vfdc OMX_IndexParamCompBufferSupplier eBufferSupplier unspecified
+omx setp 0 vfdc OMX_IndexParamVideoInit nPorts 1
+omx setp 0 vfdc OMX_IndexParamVideoInit nStartPortNumber 0
+#************************************************************
+#SET ALL THE PARAMS FOR DC#0
+omx setp 0 dc OMX_TI_IndexParamVFDCDriverInstId nDrvInstID 0
+omx setp 0 dc OMX_TI_IndexParamVFDCDriverInstId eDispVencMode 1080p60
+omx api setparam  dc 0 0 0 OMX_TI_IndexParamVFDCDriverInstId
+omx setp 0 sc OMX_TI_IndexParamVFPCNumChPerHandle nNumChannelsPerHandle 1
+omx api setparam  sc 0 0 0 OMX_TI_IndexParamVFPCNumChPerHandle
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Width  1920
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Height 1080
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Pitch  2048
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Width  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Height 0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Pitch  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmStartX  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmStartY  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmCropWidth 0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmCropHeight 0 
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution eDir input
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution nChId 0
+omx api setconfig  sc 0 0 0 OMX_TI_IndexConfigVidChResolution
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Width  1920
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Height 1080
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm0Pitch  3840
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Width  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Height 0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution Frm1Pitch  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmStartX  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmStartY  0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmCropWidth 0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution FrmCropHeight 0
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution eDir output
+omx setp 0 sc OMX_TI_IndexConfigVidChResolution nChId 0
+omx api setconfig  sc 0 0 16 OMX_TI_IndexConfigVidChResolution
+omx setp 0 sc OMX_TI_IndexParamBuffMemType eBufMemoryType default
+omx api setparam  sc 0 0 0 OMX_TI_IndexParamBuffMemType
+omx setp 0 sc OMX_TI_IndexParamBuffMemType eBufMemoryType default
+omx api setparam  sc 0 0 16 OMX_TI_IndexParamBuffMemType
+omx setp 0 sc OMX_TI_IndexConfigAlgEnable bAlgBypass disable
+omx setp 0 sc OMX_TI_IndexConfigAlgEnable nChId 0
+omx api setconfig sc 0 0 0 OMX_TI_IndexConfigAlgEnable
+omx api sendcommand port sc 0 enable 0
+omx api sendcommand port sc 0 waitforsem 0
+omx api sendcommand port sc 0 enable 16
+omx api sendcommand port sc 0 waitforsem 16
+omx api sendcommand port h264vdec 0 enable 0
+omx api sendcommand port h264vdec 0 waitforsem 0
+omx api sendcommand port vfdc 0 enable 0
+omx api sendcommand port vfdc 0 waitforsem 0
+omx api sendcommand port h264vdec 0 enable 1
+omx api sendcommand port h264vdec 0 waitforsem 1
+omx api connect h264vdec 0 1 sc 0 0
+omx api connect sc 0 16 vfdc 0 0
+omx api sendcommand state h264vdec 0 idle
+omx api sendcommand state h264vdec 0 waitforsem
+omx api sendcommand state sc 0 idle
+omx api sendcommand state sc 0 waitforsem
+omx api sendcommand state dc 0 idle
+omx api sendcommand state dc 0 waitforsem
+omx api sendcommand state vfdc 0 idle
+omx api sendcommand state vfdc 0 waitforsem
+omx api sendcommand state dc 0 exec
+omx api sendcommand state dc 0 waitforsem
+omx api sendcommand state vfdc 0 exec
+omx api sendcommand state vfdc 0 waitforsem
+omx api sendcommand state sc 0 exec
+omx api sendcommand state sc 0 waitforsem
+omx api sendcommand state h264vdec 0 exec
+omx api sendcommand state h264vdec 0 waitforsem
+sleep 60000
+omx api sendcommand state h264vdec 0 idle
+omx api sendcommand state h264vdec 0 waitforsem
+omx api sendcommand state sc 0 idle
+omx api sendcommand state sc 0 waitforsem
+omx api sendcommand state dc 0 idle
+omx api sendcommand state dc 0 waitforsem
+omx api sendcommand state vfdc 0 idle
+omx api sendcommand state vfdc 0 waitforsem
+omx api sendcommand state h264vdec 0 loaded
+omx api sendcommand state h264vdec 0 waitforsem
+omx api sendcommand state sc 0 loaded
+omx api sendcommand state sc 0 waitforsem
+omx api sendcommand state dc 0 loaded
+omx api sendcommand state dc 0 waitforsem
+omx api sendcommand state vfdc 0 loaded
+omx api sendcommand state vfdc 0 waitforsem
+omx api freehandle h264vdec 0
+omx api freehandle sc 0
+omx api freehandle vfdc 0
+omx api freehandle dc 0
+omx api uninit

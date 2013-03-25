@@ -1,0 +1,37 @@
+#omx omtb_dbg_lvl 0x10
+#omx omtb_dbg_lvl 0x08
+omx api init
+omx setp 0 h264venc numinbuf 6
+omx setp 0 h264venc inbufsize 3110400
+omx setp 0 h264venc frame_width 1920
+omx setp 0 h264venc frame_height 1080
+omx setp 0 h264venc numoutbuf 6
+omx setp 0 h264venc inbufsize_flag enable
+omx setp 0 h264venc outbufsize_flag enable
+omx setp 0 h264venc outbufsize 3110400 
+omx setp 0 h264venc inbuf allocate
+omx setp 0 h264venc outbuf allocate
+omx setp 0 h264venc data_opmode file
+omx setp 0 h264venc data_ipmode file
+omx setp 0 h264venc infile  /usr/share/ti/data/videos/dm816x_test_1920x1080_420sp.yuv
+omx setp 0 h264venc outfile /usr/share/ti/data/videos/dm816x_test_encode.264
+omx api gethandle h264venc 0 0
+omx api getparam  h264venc 0 0 0 OMX_IndexParamPortDefinition
+omx setp 0 h264venc OMX_IndexParamPortDefinition video.nStride 1920
+omx api setparam  h264venc 0 0 0 OMX_IndexParamPortDefinition
+omx api sendcommand port h264venc 0 enable 0
+omx api sendcommand port h264venc 0 waitforsem 0
+omx api sendcommand port h264venc 0 enable 1
+omx api sendcommand port h264venc 0 waitforsem 1
+omx api sendcommand state h264venc 0 idle
+omx api sendcommand state h264venc 0 waitforsem
+sleep 500
+omx api sendcommand state h264venc 0 exec
+omx api sendcommand state h264venc 0 waitforsem
+sleep 120000
+omx api sendcommand state h264venc 0 idle
+omx api sendcommand state h264venc 0 waitforsem
+omx api sendcommand state h264venc 0 loaded
+omx api sendcommand state h264venc 0 waitforsem
+omx api freehandle h264venc 0
+omx api uninit

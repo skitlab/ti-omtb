@@ -1,0 +1,22 @@
+ \
+ /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/example-applications/omtb_01_00_01_07/bin/dm81xxbm/obj/ti816x-evm/a8host/debug/cmdLine.ov5T:  \
+ ../../core/parser/src/cmdLine.c \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/string.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/features.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/predefs.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/sys/cdefs.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/wordsize.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/gnu/stubs.h \
+  /home/zorg/j.test/dm8168/arm-2009q1/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stddef.h \
+  ../../core/parser/inc/rtxData.h ../../core/common/inc/omtbMain.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/stdio.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/types.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/typesizes.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/libio.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/_G_config.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/wchar.h \
+  /home/zorg/j.test/dm8168/arm-2009q1/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stdarg.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/stdio_lim.h \
+  /home/zorg/j.test/dm8168/ti-ezsdk_dm816x-evm_5_05_01_04/linux-devkit/arm-none-linux-gnueabi/usr/include/bits/sys_errlist.h \
+  ../../core/parser/inc/mxDbg.h ../../core/parser/inc/swDef.h \
+  ../../core/parser/inc/rtxErr.h

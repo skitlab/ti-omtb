@@ -1,0 +1,54 @@
+# This makefile builds XDC dependent code for respective examples/demos/app
+
+
+
+include $(ROOTDIR)/makerules/build_config.mk
+include $(ROOTDIR)/makerules/env.mk
+include $(ROOTDIR)/makerules/platform.mk
+include $($(_APP)_OMTB_PATH)/app_properties.mk
+include xdcdep.mk
+
+.PHONY: xdcdepmake xdcdepcp
+
+#FIXME: Using if,if-else and endif
+ifeq ($(CORE),a8host)
+  $(_APP)_OMTB_FOLDER_PATH = $($(_APP)_OMTB_A8_PATH)
+endif
+ifeq ($(CORE),m3video)
+  $(_APP)_OMTB_FOLDER_PATH = $($(_APP)_OMTB_VIDEOM3_PATH)
+endif
+ifeq ($(CORE),m3vpss) 
+  $(_APP)_OMTB_FOLDER_PATH = $($(_APP)_OMTB_DSSM3_PATH)
+endif
+
+
+ifeq ($(DEST_ROOT),)
+xdcdepmake: 
+	cd $($(_APP)_OMTB_FOLDER_PATH) && $(xdc_PATH)/xdc -PD .
+else
+
+xdcdepmake: xdcdepcp
+	cd $(DEST_ROOT)/xdc/$(_APP) && $(xdc_PATH)/xdc -PD .
+
+xdcdepcp: $(DEST_ROOT)/xdc/$(_APP)/package.bld $(DEST_ROOT)/xdc/$(_APP)/package.xdc
+
+$(DEST_ROOT)/xdc/$(_APP)/package.xdc: $($(_APP)_OMTB_FOLDER_PATH)/package.xdc
+	$(MKDIR) -p $(DEST_ROOT)/xdc/$(_APP)
+	cp $($(_APP)_OMTB_FOLDER_PATH)/package.xdc $(DEST_ROOT)/xdc/$(_APP)
+
+$(DEST_ROOT)/xdc/$(_APP)/package.bld: $($(_APP)_OMTB_FOLDER_PATH)/package.bld
+	$(MKDIR) -p $(DEST_ROOT)/xdc/$(_APP)
+	cp $($(_APP)_OMTB_FOLDER_PATH)/package.bld $(DEST_ROOT)/xdc/$(_APP)
+endif
+
+ifeq ($(DEST_ROOT),)
+xdcdepclean:
+	$(ECHO) \# xdc clean $(_APP)...
+	cd $($(_APP)_OMTB_FOLDER_PATH) && $(xdc_PATH)/xdc clean -PD .
+else
+xdcdepclean: xdcdepcp
+	$(ECHO) \# xdc clean $(_APP)...
+	cd $(DEST_ROOT)/xdc/$(_APP) && $(xdc_PATH)/xdc clean -PD .
+endif
+
+# Nothing beyond this point

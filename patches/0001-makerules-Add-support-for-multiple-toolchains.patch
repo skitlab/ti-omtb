@@ -1,0 +1,52 @@
+From ba7b8c928533ef34092905e7f58bc65d0b18b24c Mon Sep 17 00:00:00 2001
+From: Siddharth Heroor <heroor@ti.com>
+Date: Fri, 17 Feb 2012 17:49:37 +0530
+Subject: [PATCH] makerules: Add support for multiple toolchains
+
+
+Signed-off-by: Siddharth Heroor <heroor@ti.com>
+---
+ makerules/rules_a8.mk |   12 +++++++-----
+ 1 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/makerules/rules_a8.mk b/makerules/rules_a8.mk
+index 964821b..8ebfe29 100644
+--- a/makerules/rules_a8.mk
++++ b/makerules/rules_a8.mk
+@@ -10,10 +10,12 @@
+ #     4. a rule common for A8 ISA has to be added or modified
+ 
+ # Set compiler/archiver/linker commands and include paths
++CROSS_COMPILE ?= arm-none-linux-gnueabi-
++TOOLCHAIN_LONGNAME ?= arm-none-linux-gnueabi
+ CODEGEN_INCLUDE = $(CODEGEN_PATH_A8)
+-CC = $(CODEGEN_PATH_A8)/bin/arm-none-linux-gnueabi-gcc
+-AR = $(CODEGEN_PATH_A8)/bin/arm-none-linux-gnueabi-ar
+-LNK = $(CODEGEN_PATH_A8)/bin/arm-none-linux-gnueabi-ld
++CC = $(CODEGEN_PATH_A8)/bin/$(CROSS_COMPILE)gcc
++AR = $(CODEGEN_PATH_A8)/bin/$(CROSS_COMPILE)ar
++LNK = $(CODEGEN_PATH_A8)/bin/$(CROSS_COMPILE)ld
+ 
+ # Internal CFLAGS - normally doesn't change
+ CFLAGS_INTERNAL = -fPIC -fno-strict-aliasing -MD -MF $(DEPFILE).P -march=armv5t -Dfar= -D_DEBUG_=1 -DMULTICHANNEL_OPT=1
+@@ -59,7 +61,7 @@ endif
+ _CFLAGS = $(CFLAGS_GLOBAL_$(CORE)) $(CFLAGS_INTERNAL) $(CFLAGS_XDCINTERNAL) $(CFLAGS_LOCAL_COMMON) $(CFLAGS_LOCAL_$(CORE)) $(CFLAGS_LOCAL_$(PLATFORM)) $(CFLAGS_LOCAL_$(SOC)) $(CFLAGS_APP_DEFINES) $(CFLAGS_COMP_COMMON) $(CFLAGS_GLOBAL_$(PLATFORM))
+ 
+ # Add some necessary INCLUDES from CodeSourcery
+-INCLUDES += -I$(CODEGEN_PATH_A8)/arm-none-linux-gnueabi/libc/usr/include
++INCLUDES += -I$(CODEGEN_PATH_A8)/$(TOOLCHAIN_LONGNAME)/libc/usr/include
+ 
+ # Object file creation
+ # The first $(CC) generates the dependency make files for each of the objects
+@@ -86,7 +88,7 @@ archive_spl:
+ 	$(AR) $(ARFLAGS) $(AR_SPL_PATH)/$(AR_SPL_NAME) $(AR_SPL_PATH)/*.ov5T
+ 
+ # Linker options and rules
+-LNKFLAGS_INTERNAL_COMMON =  -lpthread -lrt -L$(CODEGEN_PATH_A8)/arm-none-linux-gnueabi/lib
++LNKFLAGS_INTERNAL_COMMON =  -lpthread -lrt -L$(CODEGEN_PATH_A8)/$(TOOLCHAIN_LONGNAME)/lib
+ 
+ # Assemble Linker flags from all other LNKFLAGS definitions
+ _LNKFLAGS = $(LNKFLAGS_INTERNAL_COMMON) $(LNKFLAGS_INTERNAL_PROFILE) $(LNKFLAGS_GLOBAL_$(CORE)) $(LNKFLAGS_LOCAL_COMMON) $(LNKFLAGS_LOCAL_$(CORE)) 
+-- 
+1.7.0.4
+
