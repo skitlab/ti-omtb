@@ -50,12 +50,12 @@ INCLUDE_EXERNAL_INTERFACES = bios xdc omx timmosal hdvpss ipc fc xdais osal sysl
 # List of all external libraries that need to be linked
 EXTLIBS_m3video =
 EXTLIBS_m3vpss =
-EXTLIBS_a8host = $(omx_PATH)/../lib/omxcore.av5T \
-                 $(omx_PATH)/../lib/memcfg.av5T \
-                 $(omx_PATH)/../lib/domx.av5T \
-                 $(omx_PATH)/../lib/domx_delegates_shmem.av5T \
-                 $(omx_PATH)/../lib/timmosal.av5T \
-                 $(omx_PATH)/../lib/omxcfg.av5T \
+EXTLIBS_a8host = $(omx_PATH)/lib/omxcore.av5T \
+                 $(omx_PATH)/lib/memcfg.av5T \
+                 $(omx_PATH)/lib/domx.av5T \
+                 $(omx_PATH)/lib/domx_delegates_shmem.av5T \
+                 $(omx_PATH)/lib/timmosal.av5T \
+                 $(omx_PATH)/lib/omxcfg.av5T \
                  $(osal_PATH)/packages/linuxdist/build/lib/osal.a \
                  $(osal_PATH)/packages/linuxdist/cstubs/lib/cstubs.a \
                  $(fc_PATH)/packages/ti/sdo/rcm/lib/debug/rcm_syslink.av5T \
@@ -65,8 +65,8 @@ EXTLIBS_a8host = $(omx_PATH)/../lib/omxcore.av5T \
                  $(syslink_PATH)/packages/ti/syslink/lib/syslink.a_release \
                  $(linuxutils_PATH)/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV \
                  $(uia_PATH)/packages/ti/uia/linux/lib/servicemgr.a \
-                 -L$(lindevkit_PATH)/lib -lasound -lncursesw \
-                 ./lib/libedit.a
+                 -L$(lindevkit_PATH)/lib -lasound -lncursesw -lreadline
+#                 ./lib/libedit.a
 #                 $(slog_PATH)/lib/slog.a \
 
 # List all the components required by the application
