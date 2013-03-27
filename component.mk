@@ -53,7 +53,7 @@ omx_OMTB_LIST = dm816x dm81xxbm
 #
 
 # OMX Standard version 1.1: openMaxv11 
-openmaxv11_PATH = $(omx_PATH)/ti/omx/interfaces/openMaxv11
+openmaxv11_PATH = $(omx_PATH)/include
 openmaxv11_INCLUDE = $(openmaxv11_PATH)
 
 # VFDC - Video Frame Display Component
@@ -161,7 +161,7 @@ omxutils_CORE_DEPENDENCY = yes
 omxutils_PKG_LIST = omxutils
 
 # DOMX - Distributed OMX
-domx_RELPATH = ti/omx/domx
+domx_RELPATH = src/ti/omx/domx
 domx_PATH = $(omx_PATH)/$(domx_RELPATH)
 domx_INCLUDE = $(domx_PATH) 
 domx_CORE_DEPENDENCY = yes
