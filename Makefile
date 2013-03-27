@@ -153,9 +153,9 @@ clean_dm81xxbm:
 
 install_dm81xxbm:
 	$(ECHO) \# Installing OMTB for $(subst install_,,$@)... 
-	#install -d $(EXEC_DIR)
-	#cp $(ROOTDIR)/$(BINDIR)/omtb_$(APP_NAME)_$(CORE).$(EXEEXT)  $(EXEC_DIR)/omtb_$(APP_NAME)_$(CORE).$(EXEEXT)
-	#cp $(ROOTDIR)/bin/dm81xxbm/bin/ti81xx-evm/omtb_dm81xxbm_a8host.xv5T  $(EXEC_DIR)/omtb_dm81xxbm_a8host.xv5T
-	#install -m 775 $(EXEC_DIR)/omtb_dm81xxbm_a8host.xv5T
+	install -d $(EXEC_DIR)
+	cp $(ROOTDIR)/bin/dm81xxbm/bin/ti816x-evm/omtb_dm81xxbm_a8host.xv5T  $(EXEC_DIR)/omtb_dm81xxbm_a8host.xv5T
+	install -d $(EXEC_DIR)/omtb_scripts
+	cp $(ROOTDIR)/packages/ti/sdo/omtb/scripts/*.oms $(EXEC_DIR)/omtb_scripts
 
 # Nothing beyond this point
