@@ -18,7 +18,7 @@ AR = $(CODEGEN_PATH_A8)/bin/$(CROSS_COMPILE)ar
 LNK = $(CODEGEN_PATH_A8)/bin/$(CROSS_COMPILE)ld
 
 # Internal CFLAGS - normally doesn't change
-CFLAGS_INTERNAL = -fPIC -fno-strict-aliasing -MD -MF $(DEPFILE).P -march=armv5t -Dfar= -D_DEBUG_=1 -DMULTICHANNEL_OPT=1
+CFLAGS_INTERNAL = -fPIC -fno-strict-aliasing -MD -MF $(DEPFILE).P -march=armv5t -Dfar= -D_DEBUG_=1 -DMULTICHANNEL_OPT=1 -marm
 CFLAGS_DIROPTS = 
 
 # XDC specific CFLAGS 
